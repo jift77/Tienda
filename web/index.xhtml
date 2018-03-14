@@ -2,12 +2,66 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        
+        <h:form id="form">      
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <p:growl id="messages"/>
+                    <p:menubar>
+                        <p:menuitem value="Tienda" url="#" />
+                        <p:menuitem value="Admin" url="#" />
+                        <f:facet name="options">
+                            <p:inputText style="margin-right:10px" placeholder="Buscar producto"/>
+                            <p:commandButton action="#{productos.verCarrito}" value="Carrito" icon="fa fa-fw fa-cart-arrow-down" />
+                        </f:facet>
+                    </p:menubar>
+                </div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-2">
+                    <p:dataList value="#{productos.categorias}" var="categoria" type="definition">
+                        <f:facet name="header">
+                            Categorias
+                        </f:facet>
+                        <p:commandButton value="#{categoria.nombre}" styleClass="ui-priority-primary">
+
+                        </p:commandButton>
+                    </p:dataList>
+                </div>
+                <div class="ui-g-10">
+                    <p:repeat value="#{productos.productos}" var="producto">
+                        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+                            <p:outputPanel>
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <h:outputText value="Nombre:" />
+                                    <h:outputText value="#{producto.nombre}" style="font-weight: bold"/>
+
+                                    <h:outputText value="Categoria:" />
+                                    <h:outputText value="#{producto.categoria.nombre}" style="font-weight: bold"/>
+
+                                    <h:outputText value="Valor:" />
+                                    <h:outputText value="#{producto.valor}" style="font-weight: bold"/>
+
+                                    <h:outputText value="Descripcion:" />
+                                    <h:outputText value="#{producto.descripcion}" style="font-weight: bold" />
+                                </h:panelGrid>
+                            </p:outputPanel>
+                            <hr />
+                            <p:commandButton value="Agregar al carrito" id="ajax" styleClass="ui-priority-primary">
+                                <f:setPropertyActionListener value="#{producto}" target="#{productos.agregarProducto}" />
+                            </p:commandButton>
+                            <h:outputText value="#{productos.productosCantidad}"></h:outputText>
+                        </h:panelGrid>
+                        <hr />
+                    </p:repeat>
+                </div>
+            </div>
+        </h:form>
     </h:body>
 </html>
 

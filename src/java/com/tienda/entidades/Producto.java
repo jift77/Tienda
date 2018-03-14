@@ -5,11 +5,13 @@
  */
 package com.tienda.entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author georg
  */
-public class Producto {
+public class Producto implements Serializable {
     
     private int Producto_Id;
     private String Nombre;

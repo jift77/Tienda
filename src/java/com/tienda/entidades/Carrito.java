@@ -7,7 +7,6 @@ package com.tienda.entidades;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
@@ -44,5 +43,10 @@ public class Carrito {
             carItem.ReducirCantidad();
         else
             Productos.remove(prod.getProducto_Id());
+    }
+    
+    public int getCantidad()
+    {
+        return this.Productos.values().size();
     }
 }

@@ -21,11 +21,11 @@ public class OperProducto implements IOperProducto{
         
         ArrayList<Producto> result = new ArrayList<>();
         
-        result.add(new Producto("Confeti", "Producto para celebrar", 12000, new Categoria(1, "Otro", 0.15)));
-        result.add(new Producto("Televisor", "Producto para perder el tiempo", 12000, new Categoria(1, "Tecnolgia", 0.15)));
-        result.add(new Producto("Camisa", "Producto para vestirse", 12000, new Categoria(1, "Ropa", 0.15)));
+        result.add(new Producto("Confeti", "Producto para celebrar", 12000, new Categoria(2, "Otro", 0.15)));
+        result.add(new Producto("Televisor", "Producto para perder el tiempo", 12000, new Categoria(4, "Tecnologia", 0.15)));
+        result.add(new Producto("Camisa", "Producto para vestirse", 12000, new Categoria(3, "Ropa", 0.15)));
         result.add(new Producto("Casa", "Producto para habitar", 12000, new Categoria(1, "Finza Raiz", 0.15)));
-        result.add(new Producto("Radio", "Producto para escuchar musica", 12000, new Categoria(1, "Tecnologia", 0.15)));
+        result.add(new Producto("Radio", "Producto para escuchar musica", 12000, new Categoria(4, "Tecnologia", 0.15)));
                
         return result;
     }

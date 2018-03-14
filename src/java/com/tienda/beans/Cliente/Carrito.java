@@ -5,13 +5,24 @@
  */
 package com.tienda.beans.Cliente;
 
+import com.tienda.entidades.Producto;
+import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import org.springframework.context.annotation.Scope;
 
 /**
  *
  * @author georg
  */
-@ManagedBean
+@ManagedBean(name = "carrito")
+@Scope("session")
 public class Carrito {
     
+    private Carrito carrito;
+    
+    public ArrayList<Producto> getProductos()
+    {
+        return carrito.getProductos();
+    }
 }
