@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+     <h:head>
+     </h:head>
+     <h:body>
+         <h:form>
+             <div class="ui-g">
+                 <div class="ui-g-12">
+                     <p:menubar>
+                        <p:menuitem value="Tienda" action="index" />
+                    </p:menubar>
+                 </div>
+             </div>
+             <div class="ui-g">
+                 <div class="ui-g-4"></div>
+                 <div class="ui-g-4">
+                     <h:panelGrid id="grid" columns="3" cellpadding="5">
+                        <p:outputLabel for="correo" value="Correo:" />
+                        <p:inputText id="correo" required="true" value="#{logon.correo}" />
+                        <p:message for="correo" display="icon" />
+
+                        <p:outputLabel for="clave" value="Clave:" />
+                        <p:inputText id="clave" required="true" value="#{logon.clave}" />
+                        <p:message for="clave" display="icon" />
+                    </h:panelGrid>
+                    <p:commandButton id="submitButton" value="Ingresar" update="grid" actionListener="#{logon.sigin()}" />
+                    <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                    </p:messages>
+                 </div>
+                 <div class="ui-g-4"></div>
+             </div>
+         </h:form>
+     </h:body>
+</html>

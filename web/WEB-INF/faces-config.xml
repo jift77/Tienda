@@ -3,5 +3,18 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-    
+    <managed-bean>
+        <managed-bean-name>carrito</managed-bean-name>
+        <managed-bean-class>com.tienda.entidades.Carrito</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>productos</managed-bean-name>
+        <managed-bean-class>com.tienda.beans.Cliente.ListaProductos</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>carrito</property-name>
+            <value>#{carrito}</value>
+        </managed-property>
+    </managed-bean>
 </faces-config>

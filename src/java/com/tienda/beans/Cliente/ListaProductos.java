@@ -5,7 +5,6 @@
  */
 package com.tienda.beans.Cliente;
 
-import com.sun.faces.util.CollectionsUtils;
 import com.tienda.entidades.Producto;
 import com.tienda.entidades.Carrito;
 import com.tienda.entidades.Categoria;
@@ -14,19 +13,21 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import org.springframework.context.annotation.Scope;
 
 /**
  *
  * @author georg
  */
-@ManagedBean(name = "productos")
-@Scope("session")
 public class ListaProductos implements Serializable{
     
     private ArrayList<Producto> productos;
     private Carrito carrito;
+    private String msn;
+    
+    public String getMensaje()
+    {
+        return msn;
+    }
     
     @PostConstruct
     public void init()
@@ -42,8 +43,9 @@ public class ListaProductos implements Serializable{
         return productos;
     }
     
-    public void setAgregarProducto(Producto prod)
+    public void AgregarProducto(Producto prod)
     {
+        msn = prod.getNombre();
         this.carrito.AgregarProducto(prod);
     }
     
@@ -72,5 +74,19 @@ public class ListaProductos implements Serializable{
     public String verCarrito()
     {
         return "carrito";
+    }
+
+    /**
+     * @return the carrito
+     */
+    public Carrito getCarrito() {
+        return carrito;
+    }
+
+    /**
+     * @param carrito the carrito to set
+     */
+    public void setCarrito(Carrito carrito) {
+        this.carrito = carrito;
     }
 }

@@ -5,9 +5,8 @@
         <group>
             <file>file:/C:/Users/georg/Documents/NetBeansProjects/Tienda/web/carrito.xhtml</file>
             <file>file:/C:/Users/georg/Documents/NetBeansProjects/Tienda/src/java/com/tienda/beans/Cliente/ListaProductos.java</file>
-            <file>file:/C:/Users/georg/Documents/NetBeansProjects/Tienda/src/java/com/tienda/beans/Cliente/Carrito.java</file>
-            <file>file:/C:/Users/georg/Documents/NetBeansProjects/Tienda/src/java/com/tienda/operaciones/OperProducto.java</file>
             <file>file:/C:/Users/georg/Documents/NetBeansProjects/Tienda/web/index.xhtml</file>
+            <file>file:/C:/Users/georg/Documents/NetBeansProjects/Tienda/web/logon.xhtml</file>
         </group>
     </open-files>
 </project-private>

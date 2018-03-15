@@ -15,7 +15,7 @@
                         <p:menuitem value="Admin" url="#" />
                         <f:facet name="options">
                             <p:inputText style="margin-right:10px" placeholder="Buscar producto"/>
-                            <p:commandButton action="#{productos.verCarrito}" value="Carrito" icon="fa fa-fw fa-cart-arrow-down" />
+                            <p:commandButton action="carrito" value="Carrito" icon="fa fa-fw fa-cart-arrow-down" />
                         </f:facet>
                     </p:menubar>
                 </div>
@@ -25,20 +25,21 @@
                     Categorias
                 </div>
                 <div class="ui-g-10">
-                    <p:dataTable var="producto" value="#{carrito.productos}">
-                        <p:column headerText="Id">
+                    <p:dataTable var="producto" value="#{productos.carrito.productos}">
+                        <p:column headerText="Nombre">
                             <h:outputText value="#{producto.nombre}" />
                         </p:column>
-                        <p:column headerText="Year">
+                        <p:column headerText="Valor">
                             <h:outputText value="#{producto.valor}" />
                         </p:column>
-                        <p:column headerText="Brand">
+                        <p:column headerText="">
                             <p:commandButton value="Remover" styleClass="ui-priority-primary">
                                 <f:setPropertyActionListener value="#{producto}" target="#{carrito.removerProducto}" />
                             </p:commandButton>
                         </p:column>
                     </p:dataTable>
                 </div>
+            </div>
         </h:form>
     </h:body>
 </html>

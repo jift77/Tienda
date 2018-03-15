@@ -13,11 +13,12 @@
                 <div class="ui-g-12">
                     <p:growl id="messages"/>
                     <p:menubar>
-                        <p:menuitem value="Tienda" url="#" />
-                        <p:menuitem value="Admin" url="#" />
+                        <p:menuitem value="Tienda" url="index" />
+                        <p:menuitem value="Admin" action="logon" />
                         <f:facet name="options">
                             <p:inputText style="margin-right:10px" placeholder="Buscar producto"/>
-                            <p:commandButton action="#{productos.verCarrito}" value="Carrito" icon="fa fa-fw fa-cart-arrow-down" />
+                            <h:outputText value="#{productos.productosCantidad}"></h:outputText>
+                            <p:commandButton action="carrito" value="Carrito" icon="fa fa-fw fa-cart-arrow-down" />
                         </f:facet>
                     </p:menubar>
                 </div>
@@ -34,6 +35,7 @@
                     </p:dataList>
                 </div>
                 <div class="ui-g-10">
+                    <h:outputText value="#{productos.mensaje}"></h:outputText>
                     <p:repeat value="#{productos.productos}" var="producto">
                         <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
                             <p:outputPanel>
@@ -52,10 +54,9 @@
                                 </h:panelGrid>
                             </p:outputPanel>
                             <hr />
-                            <p:commandButton value="Agregar al carrito" id="ajax" styleClass="ui-priority-primary">
+                            <p:commandButton value="Agregar al carrito" styleClass="ui-priority-primary">
                                 <f:setPropertyActionListener value="#{producto}" target="#{productos.agregarProducto}" />
                             </p:commandButton>
-                            <h:outputText value="#{productos.productosCantidad}"></h:outputText>
                         </h:panelGrid>
                         <hr />
                     </p:repeat>

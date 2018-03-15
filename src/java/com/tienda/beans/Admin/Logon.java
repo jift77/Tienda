@@ -5,13 +5,64 @@
  */
 package com.tienda.beans.Admin;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author georg
  */
-@ManagedBean
+@ManagedBean(name = "logon")
 public class Logon {
+    private String correo;
+    private String clave;
     
+    public void sigin()
+    {
+        boolean res = true;
+                
+        if(!correo.contains("@"))
+        {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "No es un correo valido"));
+            res = false;
+        }
+            
+        if(clave.length() != 8)
+        {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "La clave debe ser de 8 caracteres"));
+            res = false;
+        }
+        
+        if(res)
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "info", "Datos correctos"));
+    }
+
+    /**
+     * @return the correo
+     */
+    public String getCorreo() {
+        return correo;
+    }
+
+    /**
+     * @param correo the correo to set
+     */
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    /**
+     * @return the clave
+     */
+    public String getClave() {
+        return clave;
+    }
+
+    /**
+     * @param clave the clave to set
+     */
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
 }
