@@ -5,6 +5,7 @@
  */
 package com.tienda.entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,12 +13,14 @@ import java.util.HashMap;
  *
  * @author georg
  */
-public class Carrito {
+public class Carrito implements Serializable {
     
    private HashMap<Integer, CarritoProducto> Productos;
+   private int Cantidad;
 
     public Carrito() {
         this.Productos = new HashMap<>();
+        this.Cantidad = 0;
     }
 
     /**
@@ -34,19 +37,21 @@ public class Carrito {
             carItem.IncrementarCantidad();
         else
             Productos.put(prod.getProducto_Id(),new CarritoProducto(prod));
+        this.Cantidad++;
     }
     
     public void EliminarProducto(Producto prod)
     {
         CarritoProducto carItem = Productos.get(prod.getProducto_Id());
-        if(carItem != null)
+        if(carItem != null && carItem.getCantidad() > 1)
             carItem.ReducirCantidad();
         else
             Productos.remove(prod.getProducto_Id());
+        this.Cantidad--;
     }
     
     public int getCantidad()
     {
-        return this.Productos.values().size();
+        return this.Cantidad;
     }
 }

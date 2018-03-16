@@ -35,7 +35,6 @@
                     </p:dataList>
                 </div>
                 <div class="ui-g-10">
-                    <h:outputText value="#{productos.mensaje}"></h:outputText>
                     <p:repeat value="#{productos.productos}" var="producto">
                         <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
                             <p:outputPanel>
@@ -54,7 +53,7 @@
                                 </h:panelGrid>
                             </p:outputPanel>
                             <hr />
-                            <p:commandButton value="Agregar al carrito" styleClass="ui-priority-primary">
+                            <p:commandButton value="Agregar al carrito" styleClass="ui-priority-primary" update="@form">
                                 <f:setPropertyActionListener value="#{producto}" target="#{productos.agregarProducto}" />
                             </p:commandButton>
                         </h:panelGrid>

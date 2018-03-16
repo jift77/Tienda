@@ -5,11 +5,13 @@
  */
 package com.tienda.entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author georg
  */
-public class Categoria {
+public class Categoria implements Serializable{
     private int Categoria_Id;
     private String Nombre;
     private double Impuesto;

@@ -18,22 +18,22 @@ import javax.annotation.PostConstruct;
  *
  * @author georg
  */
-public class ListaProductos implements Serializable{
+public class Tienda implements Serializable{
     
     private ArrayList<Producto> productos;
     private Carrito carrito;
-    private String msn;
-    
-    public String getMensaje()
-    {
-        return msn;
-    }
+    private int Cuantity;
     
     @PostConstruct
     public void init()
     {
         this.productos = new OperProducto().ConsultarProductos();
         this.carrito = new Carrito();
+    }
+    
+    public int getCuantity()
+    {
+        return Cuantity;
     }
 
     /**
@@ -43,19 +43,21 @@ public class ListaProductos implements Serializable{
         return productos;
     }
     
-    public void AgregarProducto(Producto prod)
+    public void setAgregarProducto(Producto prod)
     {
-        msn = prod.getNombre();
+        this.Cuantity++;
+        System.out.println(this.Cuantity);
         this.carrito.AgregarProducto(prod);
     }
     
-    public void RemoverProducto(Producto prod)
+    public void setRemoverProducto(Producto prod)
     {
         this.carrito.EliminarProducto(prod);
     }
     
     public int getProductosCantidad()
     {
+        System.out.println(this.carrito.getCantidad());
         return this.carrito.getCantidad();
     }
     
@@ -69,11 +71,6 @@ public class ListaProductos implements Serializable{
             }
         });
         return new ArrayList<>(categorias.values());
-    }
-    
-    public String verCarrito()
-    {
-        return "carrito";
     }
 
     /**

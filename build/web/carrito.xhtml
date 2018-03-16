@@ -11,11 +11,11 @@
                 <div class="ui-g-12">
                     <p:growl id="messages"/>
                     <p:menubar>
-                        <p:menuitem value="Tienda" url="#" />
+                        <p:menuitem value="Tienda" action="index" />
                         <p:menuitem value="Admin" url="#" />
                         <f:facet name="options">
                             <p:inputText style="margin-right:10px" placeholder="Buscar producto"/>
-                            <p:commandButton action="carrito" value="Carrito" icon="fa fa-fw fa-cart-arrow-down" />
+                            <p:commandButton action="carrito" value="Carrito" icon="fa fa-fw fa-cart-arrow-down" update="@form"/>
                         </f:facet>
                     </p:menubar>
                 </div>
@@ -27,14 +27,17 @@
                 <div class="ui-g-10">
                     <p:dataTable var="producto" value="#{productos.carrito.productos}">
                         <p:column headerText="Nombre">
-                            <h:outputText value="#{producto.nombre}" />
+                            <h:outputText value="#{producto.producto.nombre}" />
                         </p:column>
                         <p:column headerText="Valor">
-                            <h:outputText value="#{producto.valor}" />
+                            <h:outputText value="#{producto.producto.valor}" />
+                        </p:column>
+                        <p:column headerText="Cantidad">
+                            <h:outputText value="#{producto.cantidad}"/>
                         </p:column>
                         <p:column headerText="">
-                            <p:commandButton value="Remover" styleClass="ui-priority-primary">
-                                <f:setPropertyActionListener value="#{producto}" target="#{carrito.removerProducto}" />
+                            <p:commandButton value="Remover" styleClass="ui-priority-primary" update="@form">
+                                <f:setPropertyActionListener value="#{producto.producto}" target="#{productos.removerProducto}" />
                             </p:commandButton>
                         </p:column>
                     </p:dataTable>
