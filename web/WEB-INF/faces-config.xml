@@ -9,11 +9,23 @@
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>productos</managed-bean-name>
+        <managed-bean-name>tienda</managed-bean-name>
         <managed-bean-class>com.tienda.beans.Cliente.Tienda</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
-        <managed-property>
-            <property-name>carrito</property-name>
-            <value>#{carrito}</value>
-        </managed-property></managed-bean>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>bodega</managed-bean-name>
+        <managed-bean-class>com.tienda.beans.Admin.Bodega</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>logon</managed-bean-name>
+        <managed-bean-class>com.tienda.beans.Admin.Logon</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>producto</managed-bean-name>
+        <managed-bean-class>com.tienda.entidades.Producto</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

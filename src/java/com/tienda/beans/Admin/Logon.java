@@ -5,29 +5,26 @@
  */
 package com.tienda.beans.Admin;
 
+import java.io.Serializable;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 /**
  *
  * @author georg
  */
-@ManagedBean(name = "logon")
-public class Logon {
+public class Logon implements Serializable{
     private String correo;
     private String clave;
     
-    public void sigin()
+    public String sigin()
     {
         boolean res = true;
-                
         if(!correo.contains("@"))
         {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "No es un correo valido"));
             res = false;
         }
-            
         if(clave.length() != 8)
         {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "La clave debe ser de 8 caracteres"));
@@ -35,7 +32,9 @@ public class Logon {
         }
         
         if(res)
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "info", "Datos correctos"));
+            return "bodega";
+        
+        return "bodega";
     }
 
     /**

@@ -5,10 +5,10 @@
  */
 package com.tienda.beans.Cliente;
 
+import com.tienda.Interfaces.IOperProducto;
 import com.tienda.entidades.Producto;
-import com.tienda.entidades.Carrito;
 import com.tienda.entidades.Categoria;
-import com.tienda.operaciones.OperProducto;
+import com.tienda.TestOperaciones.OperProducto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,44 +21,23 @@ import javax.annotation.PostConstruct;
 public class Tienda implements Serializable{
     
     private ArrayList<Producto> productos;
-    private Carrito carrito;
-    private int Cuantity;
+    private IOperProducto oper;
     
     @PostConstruct
     public void init()
     {
-        this.productos = new OperProducto().ConsultarProductos();
-        this.carrito = new Carrito();
-    }
-    
-    public int getCuantity()
-    {
-        return Cuantity;
+        oper = OperProducto.ObtenerInstancia();
+        this.productos = oper.ConsultarProductos();
     }
 
     /**
      * @return the Productos
      */
     public ArrayList<Producto> getProductos() {
-        return productos;
-    }
-    
-    public void setAgregarProducto(Producto prod)
-    {
-        this.Cuantity++;
-        System.out.println(this.Cuantity);
-        this.carrito.AgregarProducto(prod);
-    }
-    
-    public void setRemoverProducto(Producto prod)
-    {
-        this.carrito.EliminarProducto(prod);
-    }
-    
-    public int getProductosCantidad()
-    {
-        System.out.println(this.carrito.getCantidad());
-        return this.carrito.getCantidad();
+        oper.ConsultarProductos().forEach((prod) -> {
+            System.out.println(prod.getNombre() +" "+ prod.getProducto_Id());
+        });
+        return oper.ConsultarProductos();
     }
     
     public ArrayList<Categoria> getCategorias()
@@ -71,19 +50,5 @@ public class Tienda implements Serializable{
             }
         });
         return new ArrayList<>(categorias.values());
-    }
-
-    /**
-     * @return the carrito
-     */
-    public Carrito getCarrito() {
-        return carrito;
-    }
-
-    /**
-     * @param carrito the carrito to set
-     */
-    public void setCarrito(Carrito carrito) {
-        this.carrito = carrito;
     }
 }

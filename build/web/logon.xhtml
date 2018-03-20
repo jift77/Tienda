@@ -24,7 +24,7 @@
                         <p:inputText id="clave" required="true" value="#{logon.clave}" />
                         <p:message for="clave" display="icon" />
                     </h:panelGrid>
-                    <p:commandButton id="submitButton" value="Ingresar" update="grid" actionListener="#{logon.sigin()}" />
+                    <p:commandButton id="submitButton" value="Ingresar" update="grid" action="#{logon.sigin}" />
                     <p:messages id="messages" showDetail="true" closable="true">
                         <p:autoUpdate />
                     </p:messages>

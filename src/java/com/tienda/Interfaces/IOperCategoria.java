@@ -5,17 +5,17 @@
  */
 package com.tienda.Interfaces;
 
-import com.tienda.entidades.Producto;
+import com.tienda.entidades.Categoria;
 import java.util.ArrayList;
 
 /**
  *
  * @author georg
  */
-public interface IOperProducto {
-    ArrayList<Producto> ConsultarProductos();
-    Producto ConsultarProducto(int id);
-    void ActualizarProducto(Producto pro);
-    void EliminarProducto(int id);
-    void InsertarProducto(Producto pro);
+public interface IOperCategoria {
+    
+    ArrayList<Categoria> ConsultarCategorias();
+    Categoria ConsultarCategoria(int id);
+    void ActualizarCategoria(Categoria cat);
+    void InsertarCategoria(Categoria cat);
 }

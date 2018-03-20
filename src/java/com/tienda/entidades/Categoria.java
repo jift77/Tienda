@@ -43,4 +43,25 @@ public class Categoria implements Serializable{
     public double getImpuesto() {
         return Impuesto;
     }
+
+    /**
+     * @param Nombre the Nombre to set
+     */
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    /**
+     * @param Impuesto the Impuesto to set
+     */
+    public void setImpuesto(double Impuesto) {
+        this.Impuesto = Impuesto;
+    }
+
+    /**
+     * @param Categoria_Id the Categoria_Id to set
+     */
+    public void setCategoria_Id(int Categoria_Id) {
+        this.Categoria_Id = Categoria_Id;
+    }
 }

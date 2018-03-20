@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/WEB-INF/templates/bodega.xhtml">
+        <ui:define name="seccion">
+            <h:panelGrid id="grid" columns="3" cellpadding="5">
+                <p:outputLabel for="nombre" value="Nombre:" />
+                <p:inputText id="nombre" required="true" value="#{producto.nombre}" />
+                <p:message for="nombre" display="icon" />
+                
+                <p:outputLabel for="categoria" value="Categoria:" />
+                <p:selectOneListbox value="#{producto.categoria}" id="categoria" converter="categoriaConverter">
+                    <f:selectItems value="#{bodega.categorias}" var="categoria" itemLabel="#{categoria.nombre}" itemValue="#{categoria}" />
+                </p:selectOneListbox>
+                <p:message for="categoria" display="icon" />
+                
+                <p:outputLabel for="descripcion" value="Descripcion:" />
+                <p:inputText id="descripcion" required="true" value="#{producto.descripcion}" />
+                <p:message for="descripcion" display="icon" />
+                
+                <p:outputLabel for="valor" value="Valor:" />
+                <p:inputText id="valor" required="true" value="#{producto.valor}" />
+                <p:message for="valor" display="icon" />
+                
+                <p:commandButton value="Guardar">
+                    <f:setPropertyActionListener value="#{producto}" target="#{bodega.guardarProducto}" />
+                </p:commandButton>
+                <p:messages id="messages" showDetail="true" closable="true">
+                    <p:autoUpdate />
+                </p:messages>
+            </h:panelGrid>
+        </ui:define>
+    </ui:composition>
+</html>

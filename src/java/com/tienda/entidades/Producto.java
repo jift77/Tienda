@@ -19,6 +19,9 @@ public class Producto implements Serializable {
     private double Valor;
     private Categoria Categoria;
     
+    public Producto()
+    {}
+    
     public Producto(int producto_id, String nombre, String descripcion, double valor, Categoria categoria)
     {
         this.Producto_Id = producto_id;

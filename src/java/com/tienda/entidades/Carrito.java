@@ -30,7 +30,7 @@ public class Carrito implements Serializable {
         return new ArrayList<>(this.Productos.values());
     }
     
-    public void AgregarProducto(Producto prod)
+    public void setAgregarProducto(Producto prod)
     {
         CarritoProducto carItem = Productos.get(prod.getProducto_Id());
         if(carItem != null)
@@ -40,7 +40,7 @@ public class Carrito implements Serializable {
         this.Cantidad++;
     }
     
-    public void EliminarProducto(Producto prod)
+    public void setRemoverProducto(Producto prod)
     {
         CarritoProducto carItem = Productos.get(prod.getProducto_Id());
         if(carItem != null && carItem.getCantidad() > 1)
