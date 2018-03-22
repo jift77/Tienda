@@ -11,7 +11,9 @@
                     <h:outputText value="#{producto.producto.nombre}" />
                 </p:column>
                 <p:column headerText="Valor">
-                    <h:outputText value="#{producto.producto.valor}" />
+                    <h:outputText value="#{producto.producto.total}">
+                        <f:convertNumber type="currency" currencyCode="COP" />
+                    </h:outputText>
                 </p:column>
                 <p:column headerText="Cantidad">
                     <h:outputText value="#{producto.cantidad}"/>
@@ -22,6 +24,15 @@
                     </p:commandButton>
                 </p:column>
             </p:dataTable>
+            <br />
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="total" value="Total: " />
+                <h:outputText value="#{carrito.total}" id="total">
+                    <f:convertNumber type="currency" currencyCode="COP" />
+                </h:outputText>
+            </h:panelGrid>
+            <hr />
+            <p:commandButton value="Comprar" action="pasarelaPago"></p:commandButton>
         </ui:define>
     </ui:composition>
 </html>

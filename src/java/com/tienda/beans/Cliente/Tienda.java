@@ -12,6 +12,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.annotation.PostConstruct;
+import org.primefaces.model.menu.DefaultMenuItem;
+import org.primefaces.model.menu.DefaultMenuModel;
+import org.primefaces.model.menu.DefaultSubMenu;
+import org.primefaces.model.menu.MenuModel;
 
 /**
  *
@@ -20,11 +24,28 @@ import javax.annotation.PostConstruct;
 public class Tienda implements Serializable{
     
     private ArrayList<Producto> productos;
+    private MenuModel menu;
     
     @PostConstruct
     public void init()
     {
         this.productos = new OperProducto().ConsultarProductos();
+        CrearMenuCategorias();
+    }
+    
+    private void CrearMenuCategorias()
+    {
+        menu = new DefaultMenuModel();
+        DefaultSubMenu principal = new DefaultSubMenu("Categorias");
+        
+        ArrayList<Categoria> categorias = getCategorias();
+        categorias.stream().map((cat) -> new DefaultMenuItem(cat.getNombre())).map((item) -> {
+            item.setCommand(null);
+            return item;
+        }).forEachOrdered((item) -> {
+            principal.addElement(item);
+        });
+        getMenu().addElement(principal);
     }
 
     /**
@@ -44,5 +65,12 @@ public class Tienda implements Serializable{
             }
         });
         return new ArrayList<>(categorias.values());
+    }
+
+    /**
+     * @return the menu
+     */
+    public MenuModel getMenu() {
+        return menu;
     }
 }

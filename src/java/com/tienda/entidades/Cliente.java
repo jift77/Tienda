@@ -5,6 +5,8 @@
  */
 package com.tienda.entidades;
 
+import com.tienda.beans.Cliente.TarjetaCredito;
+
 /**
  *
  * @author georg

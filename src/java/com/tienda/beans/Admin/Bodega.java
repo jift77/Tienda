@@ -53,4 +53,9 @@ public class Bodega implements Serializable{
     {
         return new OperProducto().ConsultarProductos();
     }
+    
+    public void setGuardarCategoria(Categoria categoria)
+    {
+        new OperCategoria().InsertarCategoria(categoria);
+    }
 }

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/WEB-INF/templates/bodega.xhtml">
             <ui:define name="seccion">
@@ -16,8 +17,16 @@
                     <p:column headerText="Nombre">
                         <h:outputText value="#{producto.nombre}" />
                     </p:column>
+                    <p:column headerText="Valor">
+                        <h:outputText value="#{producto.valor}">
+                            <f:convertNumber type="currency" currencyCode="COP" />
+                        </h:outputText>
+                    </p:column>
                     <p:column headerText="Descripcion">
                         <h:outputText value="#{producto.descripcion}" />
+                    </p:column>
+                    <p:column headerText="Existencias">
+                        <h:outputText value="#{producto.existencias}" />
                     </p:column>
                     <p:column headerText="Categoria">
                         <h:outputText value="#{producto.categoria.nombre}" />

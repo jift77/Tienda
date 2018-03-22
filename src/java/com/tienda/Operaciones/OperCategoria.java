@@ -84,7 +84,7 @@ public class OperCategoria extends TiendaDBManager implements IOperCategoria {
             conectarse();
             if(con != null)
             {
-                PreparedStatement ps = con.prepareStatement("INSERT INTO Categoria (Nombre, Impuesto) values (?, ?)");
+                PreparedStatement ps = con.prepareStatement("INSERT INTO Categoria (NombreCat, Impuesto) values (?, ?)");
                 ps.setString(1, cat.getNombre());
                 ps.setDouble(2, cat.getImpuesto());
                 ps.executeUpdate();

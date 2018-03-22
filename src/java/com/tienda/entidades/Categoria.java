@@ -16,6 +16,9 @@ public class Categoria implements Serializable{
     private String Nombre;
     private double Impuesto;
     
+    public Categoria()
+    {}
+    
     public Categoria(int categoria_id, String nombre, double impuesto)
     {
         this.Categoria_Id = categoria_id;

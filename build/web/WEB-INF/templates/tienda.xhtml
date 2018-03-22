@@ -14,24 +14,19 @@
                 <div class="ui-g-12">
                     <p:growl id="messages"/>
                     <p:menubar>
-                        <p:menuitem value="Tienda" action="index" />
-                        <p:menuitem value="Admin" action="logon" />
+                        <p:menuitem value="Tienda" action="tienda" immediate="true"/>
+                        <p:menuitem value="Admin" action="logon" immediate="true"/>
                         <f:facet name="options">
                             <p:inputText style="margin-right:10px" placeholder="Buscar producto"/>
                             <h:outputText value="#{carrito.cantidad}"></h:outputText>
-                            <p:commandButton action="carrito" value="Carrito" icon="fa fa-fw fa-cart-arrow-down" />
+                            <p:commandButton action="carrito" value="Carrito" icon="fa fa-fw fa-cart-arrow-down" immediate="true"/>
                         </f:facet>
                     </p:menubar>
                 </div>
             </div>
             <div class="ui-g">
                 <div class="ui-g-2">
-                    <p:dataList value="#{tienda.categorias}" var="categoria" type="definition">
-                        <f:facet name="header">
-                            Categorias
-                        </f:facet>
-                        <p:commandButton value="#{categoria.nombre}" styleClass="ui-priority-primary" />
-                    </p:dataList>
+                    <p:menu model="#{tienda.menu}" />
                 </div>
                 <div class="ui-g-10">
                     <ui:insert name="seccion">

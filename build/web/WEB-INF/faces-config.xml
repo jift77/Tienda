@@ -5,9 +5,9 @@
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <managed-bean>
         <managed-bean-name>carrito</managed-bean-name>
-        <managed-bean-class>com.tienda.entidades.Carrito</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
+        <managed-bean-class>com.tienda.beans.Cliente.Carrito</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
     <managed-bean>
         <managed-bean-name>tienda</managed-bean-name>
         <managed-bean-class>com.tienda.beans.Cliente.Tienda</managed-bean-class>
@@ -28,4 +28,51 @@
         <managed-bean-class>com.tienda.entidades.Producto</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>categoria</managed-bean-name>
+        <managed-bean-class>com.tienda.entidades.Categoria</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>carrito</from-outcome>
+            <to-view-id>/Cliente/carrito.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>tienda</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>logon</from-outcome>
+            <to-view-id>/Admin/logon.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/Admin/*</from-view-id>
+        <navigation-case>
+            <from-outcome>productos</from-outcome>
+            <to-view-id>/Admin/productos.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/Admin/productos.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>producto</from-outcome>
+            <to-view-id>/Admin/producto.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/Cliente/carrito.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>pasarelaPago</from-outcome>
+            <to-view-id>/Cliente/pasarelaPago.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/Admin/categorias.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>categoria</from-outcome>
+            <to-view-id>/Admin/categoria.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

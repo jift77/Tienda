@@ -5,6 +5,8 @@
  */
 package com.tienda.entidades;
 
+import com.tienda.beans.Cliente.CarritoProducto;
+import com.tienda.beans.Cliente.Carrito;
 import java.util.ArrayList;
 import java.util.Date;
 

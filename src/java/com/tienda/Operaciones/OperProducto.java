@@ -37,7 +37,8 @@ public class OperProducto extends TiendaDBManager implements IOperProducto {
                             rta.getInt("producto_Id"), 
                             rta.getString("nombre"), 
                             rta.getString("descripcion"),
-                            rta.getDouble("valor"),
+                            rta.getLong("valor"),
+                            rta.getInt("cantidad"),
                             new Categoria(
                                     rta.getInt("categoria_id"), 
                                     rta.getString("nombreCat"), 
@@ -75,11 +76,12 @@ public class OperProducto extends TiendaDBManager implements IOperProducto {
             conectarse();
             if(con != null)
             {
-                PreparedStatement ps = con.prepareStatement("INSERT INTO producto (Nombre, Descripcion, Valor, Categoria_id) values (?, ? ,?, ?)");
+                PreparedStatement ps = con.prepareStatement("INSERT INTO producto (Nombre, Descripcion, Valor, Cantidad, Categoria_id) values (?, ? ,?, ?, ?)");
                 ps.setString(1, pro.getNombre());
                 ps.setString(2, pro.getDescripcion());
-                ps.setDouble(3, pro.getValor());
-                ps.setDouble(4, pro.getCategoria().getCategoria_Id());
+                ps.setLong(3, pro.getValor());
+                ps.setInt(4, pro.getExistencias());
+                ps.setInt(5, pro.getCategoria().getCategoria_Id());
                 ps.executeUpdate();
             }
             desconectarse();

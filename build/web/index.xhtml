@@ -19,7 +19,19 @@
                                 <h:outputText value="#{producto.categoria.nombre}" style="font-weight: bold"/>
 
                                 <h:outputText value="Valor:" />
-                                <h:outputText value="#{producto.valor}" style="font-weight: bold"/>
+                                <h:outputText value="#{producto.valor}">
+                                    <f:convertNumber type="currency" currencyCode="COP" />
+                                </h:outputText>
+                                
+                                <h:outputText value="Impuesto:" />
+                                <h:outputText value="#{producto.impuesto}">
+                                    <f:convertNumber type="currency" currencyCode="COP" />
+                                </h:outputText>
+                                
+                                <h:outputText value="Total:" />
+                                <h:outputText value="#{producto.total}" style="font-weight: bold">
+                                    <f:convertNumber type="currency" currencyCode="COP" />
+                                </h:outputText>
 
                                 <h:outputText value="Descripcion:" />
                                 <h:outputText value="#{producto.descripcion}" style="font-weight: bold" />

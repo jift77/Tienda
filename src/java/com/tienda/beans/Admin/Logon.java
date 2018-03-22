@@ -32,7 +32,7 @@ public class Logon implements Serializable{
         }
         
         if(res)
-            return "bodega";
+            return "productos";
         
         return "productos";
     }
