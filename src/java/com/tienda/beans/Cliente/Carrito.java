@@ -66,4 +66,13 @@ public class Carrito implements Serializable {
     public long getTotal() {
         return this.Total;
     }
+    
+    public int getCantidadProducto(int producto_id)
+    {
+        CarritoProducto prod = this.Productos.get(producto_id);
+        if(prod != null)
+            return prod.getCantidad();
+        else
+            return 0;
+    }
 }

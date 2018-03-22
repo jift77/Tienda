@@ -38,7 +38,7 @@
                             </h:panelGrid>
                         </p:outputPanel>
                         <hr />
-                        <p:commandButton value="Agregar al carrito" styleClass="ui-priority-primary" update="@form">
+                        <p:commandButton value="Agregar al carrito" styleClass="ui-priority-primary" update="@form" disabled="#{!producto.disponible}">
                             <f:setPropertyActionListener value="#{producto}" target="#{carrito.agregarProducto}" />
                         </p:commandButton>
                     </h:panelGrid>

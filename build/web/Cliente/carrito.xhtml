@@ -18,6 +18,11 @@
                 <p:column headerText="Cantidad">
                     <h:outputText value="#{producto.cantidad}"/>
                 </p:column>
+                <p:column headerText="Total">
+                    <h:outputText value="#{producto.producto.total * producto.cantidad}">
+                        <f:convertNumber type="currency" currencyCode="COP" />
+                    </h:outputText>
+                </p:column>
                 <p:column headerText="">
                     <p:commandButton value="Remover" styleClass="ui-priority-primary" update="@form">
                         <f:setPropertyActionListener value="#{producto.producto}" target="#{carrito.removerProducto}" />

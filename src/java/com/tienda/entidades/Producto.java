@@ -19,6 +19,7 @@ public class Producto implements Serializable {
     private long Valor;
     private Categoria Categoria;
     private int Existencias;
+    private boolean Disponible;
     
     public Producto()
     {}
@@ -125,6 +126,20 @@ public class Producto implements Serializable {
      */
     public void setExistencias(int Existencias) {
         this.Existencias = Existencias;
+    }
+
+    /**
+     * @return the Disponible
+     */
+    public boolean isDisponible() {
+        return Disponible;
+    }
+
+    /**
+     * @param Disponible the Disponible to set
+     */
+    public void setDisponible(boolean Disponible) {
+        this.Disponible = Disponible;
     }
     
 }

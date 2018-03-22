@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
@@ -52,6 +53,13 @@ public class Tienda implements Serializable{
      * @return the Productos
      */
     public ArrayList<Producto> getProductos() {
+        Carrito car = (Carrito)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("carrito");
+        if(car != null)
+        {
+            this.productos.forEach((prod) -> {
+                prod.setDisponible(prod.getExistencias() > car.getCantidadProducto(prod.getProducto_Id()));
+            });
+        }
         return productos;
     }
     

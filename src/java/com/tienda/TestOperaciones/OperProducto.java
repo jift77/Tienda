@@ -25,12 +25,12 @@ public class OperProducto implements IOperProducto, Serializable{
     {
         OperCategoria cat = OperCategoria.ObtenerInstancia();
         
-        productos = new HashMap<>();
+        /*productos = new HashMap<>();
         productos.put(1,new Producto(1,"Confeti", "Producto para celebrar", 12000, cat.ConsultarCategoria(2)));
         productos.put(2,new Producto(2,"Televisor", "Producto para perder el tiempo", 12000, cat.ConsultarCategoria(4)));
         productos.put(3,new Producto(3,"Camisa", "Producto para vestirse", 12000, cat.ConsultarCategoria(3)));
         productos.put(4,new Producto(4,"Casa", "Producto para habitar", 12000, cat.ConsultarCategoria(1)));
-        productos.put(5,new Producto(5,"Radio", "Producto para escuchar musica", 12000, cat.ConsultarCategoria(4)));
+        productos.put(5,new Producto(5,"Radio", "Producto para escuchar musica", 12000, cat.ConsultarCategoria(4)));*/
     }
     
     public static OperProducto ObtenerInstancia()
