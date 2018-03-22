@@ -7,8 +7,8 @@ package com.tienda.beans.Admin;
 
 import com.tienda.Interfaces.IOperCategoria;
 import com.tienda.Interfaces.IOperProducto;
-import com.tienda.TestOperaciones.OperCategoria;
-import com.tienda.TestOperaciones.OperProducto;
+import com.tienda.Operaciones.OperCategoria;
+import com.tienda.Operaciones.OperProducto;
 import com.tienda.entidades.Categoria;
 import com.tienda.entidades.Producto;
 import java.io.Serializable;
@@ -21,16 +21,12 @@ import javax.annotation.PostConstruct;
  */
 public class Bodega implements Serializable{
     
-    private IOperProducto operProducto;
-    private IOperCategoria operCategoria;
     private ArrayList<Categoria> categorias;
     
     @PostConstruct
     public void Init()
     {
-        operCategoria = OperCategoria.ObtenerInstancia();
-        operProducto = OperProducto.ObtenerInstancia();
-        categorias = operCategoria.ConsultarCategorias();
+        categorias = new OperCategoria().ConsultarCategorias();
     }
 
     /**
@@ -42,14 +38,16 @@ public class Bodega implements Serializable{
     
     public Categoria ConsultarCategoria(int id)
     {
-        return operCategoria.ConsultarCategoria(id);
+        for(Categoria cat : categorias)
+        {
+            if(cat.getCategoria_Id() == id)
+                return cat;
+        }
+        return null;
     }
     
     public void setGuardarProducto(Producto producto)
     {
-        operProducto.InsertarProducto(producto);
-        operProducto.ConsultarProductos().forEach((prod) -> {
-            System.out.println(prod.getNombre() +" "+ prod.getProducto_Id());
-        }); //return "bodega";
+        new OperProducto().InsertarProducto(producto);
     }
 }

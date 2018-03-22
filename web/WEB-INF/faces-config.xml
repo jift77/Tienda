@@ -11,12 +11,12 @@
     <managed-bean>
         <managed-bean-name>tienda</managed-bean-name>
         <managed-bean-class>com.tienda.beans.Cliente.Tienda</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
+        <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>bodega</managed-bean-name>
         <managed-bean-class>com.tienda.beans.Admin.Bodega</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
+        <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>logon</managed-bean-name>

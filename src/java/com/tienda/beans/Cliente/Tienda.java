@@ -5,10 +5,9 @@
  */
 package com.tienda.beans.Cliente;
 
-import com.tienda.Interfaces.IOperProducto;
+import com.tienda.Operaciones.OperProducto;
 import com.tienda.entidades.Producto;
 import com.tienda.entidades.Categoria;
-import com.tienda.TestOperaciones.OperProducto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,23 +20,18 @@ import javax.annotation.PostConstruct;
 public class Tienda implements Serializable{
     
     private ArrayList<Producto> productos;
-    private IOperProducto oper;
     
     @PostConstruct
     public void init()
     {
-        oper = OperProducto.ObtenerInstancia();
-        this.productos = oper.ConsultarProductos();
+        this.productos = new OperProducto().ConsultarProductos();
     }
 
     /**
      * @return the Productos
      */
     public ArrayList<Producto> getProductos() {
-        oper.ConsultarProductos().forEach((prod) -> {
-            System.out.println(prod.getNombre() +" "+ prod.getProducto_Id());
-        });
-        return oper.ConsultarProductos();
+        return productos;
     }
     
     public ArrayList<Categoria> getCategorias()
