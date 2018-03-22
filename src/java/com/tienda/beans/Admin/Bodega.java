@@ -5,8 +5,6 @@
  */
 package com.tienda.beans.Admin;
 
-import com.tienda.Interfaces.IOperCategoria;
-import com.tienda.Interfaces.IOperProducto;
 import com.tienda.Operaciones.OperCategoria;
 import com.tienda.Operaciones.OperProducto;
 import com.tienda.entidades.Categoria;
@@ -49,5 +47,10 @@ public class Bodega implements Serializable{
     public void setGuardarProducto(Producto producto)
     {
         new OperProducto().InsertarProducto(producto);
+    }
+    
+    public ArrayList<Producto> getProductos()
+    {
+        return new OperProducto().ConsultarProductos();
     }
 }

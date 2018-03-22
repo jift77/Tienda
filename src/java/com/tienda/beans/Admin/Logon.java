@@ -34,7 +34,7 @@ public class Logon implements Serializable{
         if(res)
             return "bodega";
         
-        return "bodega";
+        return "productos";
     }
 
     /**

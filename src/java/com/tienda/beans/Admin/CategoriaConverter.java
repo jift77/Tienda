@@ -5,6 +5,7 @@
  */
 package com.tienda.beans.Admin;
 
+import com.tienda.Operaciones.OperCategoria;
 import com.tienda.entidades.Categoria;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;

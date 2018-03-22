@@ -33,7 +33,7 @@ public class OperCategoria extends TiendaDBManager implements IOperCategoria {
                 {   
                     Categoria c = new Categoria(
                             rta.getInt("Categoria_Id"), 
-                            rta.getString("Nombre"), 
+                            rta.getString("NombreCat"), 
                             rta.getDouble("Impuesto")
                     );
                     result.add(c);
@@ -49,7 +49,28 @@ public class OperCategoria extends TiendaDBManager implements IOperCategoria {
 
     @Override
     public Categoria ConsultarCategoria(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Categoria result = null;
+        try {
+            conectarse();
+            if(con != null)
+            {     
+                PreparedStatement ps = con.prepareStatement("SELECT * FROM Categoria WHERE Categoria_Id = ?");
+                ps.setInt(1, id);
+                ResultSet rta = ps.executeQuery();
+                while(rta.next())
+                {   
+                    result = new Categoria(
+                            rta.getInt("Categoria_Id"), 
+                            rta.getString("NombreCat"), 
+                            rta.getDouble("Impuesto")
+                    );
+                }
+                desconectarse();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OperProducto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
     }
 
     @Override

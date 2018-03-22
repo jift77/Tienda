@@ -79,7 +79,7 @@ public class OperProducto extends TiendaDBManager implements IOperProducto {
                 ps.setString(1, pro.getNombre());
                 ps.setString(2, pro.getDescripcion());
                 ps.setDouble(3, pro.getValor());
-                ps.setDouble(3, pro.getCategoria().getCategoria_Id());
+                ps.setDouble(4, pro.getCategoria().getCategoria_Id());
                 ps.executeUpdate();
             }
             desconectarse();
