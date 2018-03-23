@@ -14,7 +14,7 @@
                 <p:inputMask id="impuesto" required="true" value="#{categoria.impuesto}" mask="0.99"/>
                 <p:message for="impuesto" display="icon" />
                 
-                <p:commandButton value="Guardar" action="categorias">
+                <p:commandButton value="Guardar" action="categorias" update="@form">
                     <f:setPropertyActionListener value="#{categoria}" target="#{bodega.guardarCategoria}" />
                 </p:commandButton>
                 <p:messages id="messages" showDetail="true" closable="true">

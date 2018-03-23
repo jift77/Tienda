@@ -34,7 +34,7 @@
                 </p:inputText>
                 <p:message for="cantidad" display="icon" />
                 
-                <p:commandButton value="Guardar" action="productos">
+                <p:commandButton value="Guardar" action="productos" update="@form">
                     <f:setPropertyActionListener value="#{producto}" target="#{bodega.guardarProducto}" />
                 </p:commandButton>
                 <p:messages id="messages" showDetail="true" closable="true">

@@ -13,10 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
-import org.primefaces.model.menu.DefaultMenuItem;
-import org.primefaces.model.menu.DefaultMenuModel;
-import org.primefaces.model.menu.DefaultSubMenu;
-import org.primefaces.model.menu.MenuModel;
 
 /**
  *
@@ -25,28 +21,12 @@ import org.primefaces.model.menu.MenuModel;
 public class Tienda implements Serializable{
     
     private ArrayList<Producto> productos;
-    private MenuModel menu;
+    private int FiltroCat;
     
     @PostConstruct
     public void init()
     {
         this.productos = new OperProducto().ConsultarProductos();
-        CrearMenuCategorias();
-    }
-    
-    private void CrearMenuCategorias()
-    {
-        menu = new DefaultMenuModel();
-        DefaultSubMenu principal = new DefaultSubMenu("Categorias");
-        
-        ArrayList<Categoria> categorias = getCategorias();
-        categorias.stream().map((cat) -> new DefaultMenuItem(cat.getNombre())).map((item) -> {
-            item.setCommand(null);
-            return item;
-        }).forEachOrdered((item) -> {
-            principal.addElement(item);
-        });
-        getMenu().addElement(principal);
     }
 
     /**
@@ -60,7 +40,19 @@ public class Tienda implements Serializable{
                 prod.setDisponible(prod.getExistencias() > car.getCantidadProducto(prod.getProducto_Id()));
             });
         }
-        return productos;
+        
+        if(FiltroCat == 0)
+        {
+            return productos;
+        }
+        else
+        {
+            ArrayList<Producto> prod = new ArrayList<>();
+            productos.stream().filter((p) -> (p.getCategoria().getCategoria_Id() == FiltroCat)).forEachOrdered((p) -> {
+                prod.add(p);
+            });
+            return prod;
+        }
     }
     
     public ArrayList<Categoria> getCategorias()
@@ -76,9 +68,9 @@ public class Tienda implements Serializable{
     }
 
     /**
-     * @return the menu
+     * @param FiltroCat the FiltroCat to set
      */
-    public MenuModel getMenu() {
-        return menu;
+    public void setFiltroCat(int FiltroCat) {
+        this.FiltroCat = FiltroCat;
     }
 }

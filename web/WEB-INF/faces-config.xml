@@ -6,7 +6,6 @@
     <managed-bean>
         <managed-bean-name>carrito</managed-bean-name>
         <managed-bean-class>com.tienda.beans.Cliente.Carrito</managed-bean-class>
-    
         <managed-bean-scope>session</managed-bean-scope></managed-bean>
     <managed-bean>
         <managed-bean-name>tienda</managed-bean-name>

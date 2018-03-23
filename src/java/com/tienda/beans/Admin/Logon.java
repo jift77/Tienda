@@ -14,41 +14,34 @@ import javax.faces.context.FacesContext;
  * @author georg
  */
 public class Logon implements Serializable{
-    private String correo;
+    private String usuario;
     private String clave;
     
     public String sigin()
     {
-        boolean res = true;
-        if(!correo.contains("@"))
+        boolean res = true;        
+        if(!usuario.equals("admin") || !clave.equals("laclave"))
         {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "No es un correo valido"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "usuario o clave incorrectos"));
             res = false;
         }
-        if(clave.length() != 8)
-        {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "La clave debe ser de 8 caracteres"));
-            res = false;
-        }
-        
+            
         if(res)
             return "productos";
         
-        return "productos";
+        return null;
     }
 
     /**
-     * @return the correo
+     * @return the usuario
      */
-    public String getCorreo() {
-        return correo;
+    public String getUsuario() {
+        return usuario;
     }
 
-    /**
-     * @param correo the correo to set
-     */
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     /**

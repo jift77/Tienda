@@ -16,15 +16,15 @@
                  <div class="ui-g-4"></div>
                  <div class="ui-g-4">
                      <h:panelGrid id="grid" columns="3" cellpadding="5">
-                        <p:outputLabel for="correo" value="Correo:" />
-                        <p:inputText id="correo" required="true" value="#{logon.correo}" />
-                        <p:message for="correo" display="icon" />
+                        <p:outputLabel for="usuario" value="Usuario:" />
+                        <p:inputText id="usuario" required="true" value="#{logon.usuario}" />
+                        <p:message for="usuario" display="icon" />
 
                         <p:outputLabel for="clave" value="Clave:" />
-                        <p:inputText id="clave" required="true" value="#{logon.clave}" />
+                        <p:inputText id="clave" required="true" value="#{logon.clave}" type="password" />
                         <p:message for="clave" display="icon" />
                     </h:panelGrid>
-                    <p:commandButton id="submitButton" value="Ingresar" update="grid" action="#{logon.sigin}" />
+                     <p:commandButton id="submitButton" value="Ingresar" update="grid" action="#{logon.sigin}" />
                     <p:messages id="messages" showDetail="true" closable="true">
                         <p:autoUpdate />
                     </p:messages>
