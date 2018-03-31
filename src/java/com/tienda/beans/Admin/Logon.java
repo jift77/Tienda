@@ -5,6 +5,8 @@
  */
 package com.tienda.beans.Admin;
 
+import com.tienda.Operaciones.OperUser;
+import com.tienda.entidades.User;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -19,8 +21,13 @@ public class Logon implements Serializable{
     
     public String sigin()
     {
-        boolean res = true;        
-        if(!usuario.equals("admin") || !clave.equals("laclave"))
+        boolean res = true;
+
+        User admin = new User();
+        admin.setClave(clave);
+        admin.setLogin(usuario);
+        
+        if(!new OperUser().autenticar(admin))
         {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "usuario o clave incorrectos"));
             res = false;
