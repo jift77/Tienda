@@ -18,8 +18,7 @@
                         <p:menuitem value="Tienda" action="tienda" immediate="true"/>
                         <p:menuitem value="Admin" action="logon" immediate="true"/>
                         <f:facet name="options">
-                            <h:outputText value="#{carrito.cantidad}"></h:outputText>
-                            <p:commandButton action="carrito" value="Carrito" icon="fa fa-fw fa-cart-arrow-down" immediate="true"/>
+                            <p:commandButton action="carrito" value="#{carrito.cantidad}" icon="fa fa-fw fa-cart-arrow-down" immediate="true"/>
                         </f:facet>
                     </p:menubar>
                 </div>

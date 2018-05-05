@@ -5,25 +5,28 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition template="/WEB-INF/templates/tienda.xhtml">
         <ui:define name="seccion">
+            <h:outputScript target="head" name="js/jquery-3.3.1.min.js" />
+            <h:outputScript target="head" name="js/jquerymask.js" />
+            <h:outputScript target="head" name="js/servicio.js" />
             <h:panelGrid id="grid" columns="3" cellpadding="5">
                 <p:outputLabel for="nombre" value="Nombre en la Tarjeta de credito:" />
-                <p:inputText id="nombre" required="true" />
+                <p:inputText id="nombre" />
                 <p:message for="nombre" display="icon" />
                 
                 <p:outputLabel for="numero" value="Numero de Tarjeta de Credito:" />
-                <p:inputMask id="numero" required="true" mask="9999-9999-9999-9999" />
+                <p:inputText id="numero" />
                 <p:message for="numero" display="icon" />
                 
                 <p:outputLabel for="vence" value="Fecha vencimiento:" />
-                <p:inputMask id="vence" required="true" mask="99/99" />
+                <p:inputText id="vence" />
                 <p:message for="vence" display="icon" />
                 
                 <p:outputLabel for="cvc" value="CVC:" />
-                <p:inputMask id="cvc" required="true" mask="999" />
+                <p:inputText id="cvc" />
                 <p:message for="cvc" display="icon" />
             </h:panelGrid>
             <hr />
-            <p:commandButton value="Comprar" update="@form"></p:commandButton>
+            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="comprar">Comprar</button>
             <p:messages id="messages1" showDetail="true" closable="true">
                 <p:autoUpdate />
             </p:messages>
