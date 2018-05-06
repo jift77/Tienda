@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <ui:composition template="/WEB-INF/templates/tienda.xhtml">
+        <ui:define name="seccion">
+            <h:outputScript target="head" name="js/jquery-3.3.1.min.js" />
+            <h:outputScript target="head" name="js/knockout-3.4.2.js" />
+            <h:outputScript target="head" name="js/jquerymask.js" />
+            <h:outputScript target="head" name="js/servicio.js" />
+            <h:panelGrid id="grid" columns="3" cellpadding="5">
+                <p:outputLabel for="nombre" value="Nombre en la Tarjeta de credito:" />
+                <p:inputText id="nombre" pt:data-bind="textInput: model.nombre"/>
+                <br />
+                
+                <p:outputLabel for="numero" value="Numero de Tarjeta de Credito:" />
+                <p:inputText id="numero" pt:data-bind="textInput: model.numeroTarjeta"/>
+                <span data-bind='visible: model.numeroTarjeta.hasError, text: model.numeroTarjeta.validationMessage'></span>
+                
+                <p:outputLabel for="vence" value="Fecha vencimiento:" />
+                <p:inputText id="vence" pt:data-bind="textInput: model.vence"/>
+                <span data-bind='visible: model.vence.hasError, text: model.vence.validationMessage'></span>
+                
+                <p:outputLabel for="cvc" value="CVC:" />
+                <p:inputText id="cvc" pt:data-bind="textInput: model.cvc"/>
+                <span data-bind='visible: model.cvc.hasError, text: model.cvc.validationMessage'></span>
+                
+                <p:outputLabel for="total" value="Valor compra:" />
+                <h:outputText value="#{carrito.total}" id="total">
+                    <f:convertNumber type="currency" currencyCode="COP" />
+                </h:outputText>
+                <h:inputHidden value="#{carrito.total}" id="hdnTotal"/>
+                <h:inputHidden value="#{caja.codigo}" id="hdnCodigo" />
+            </h:panelGrid>
+            <hr />
+            <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: comprar, disable: model.numeroTarjeta.hasError || model.vence.hasError || model.cvc.hasError">Comprar</button>
+            <p:commandButton action="#{caja.facturar}" value="facturar" pt:data-bind="visible: false" id="btnFacturar"></p:commandButton>
+        </ui:define>
+    </ui:composition>
+</html>

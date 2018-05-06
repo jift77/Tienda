@@ -41,7 +41,7 @@ public class Carrito implements Serializable {
         else
             Productos.put(prod.getProducto_Id(),new CarritoProducto(prod));
         this.Cantidad++;
-        this.Total += prod.getTotal();
+        this.setTotal((long) (this.Total + prod.getTotal()));
     }
     
     public void setRemoverProducto(Producto prod)
@@ -52,7 +52,7 @@ public class Carrito implements Serializable {
         else
             Productos.remove(prod.getProducto_Id());
         this.Cantidad--;
-        this.Total -= prod.getTotal();
+        this.setTotal((long) (this.Total - prod.getTotal()));
     }
     
     public int getCantidad()
@@ -74,5 +74,12 @@ public class Carrito implements Serializable {
             return prod.getCantidad();
         else
             return 0;
+    }
+
+    /**
+     * @param Total the Total to set
+     */
+    public void setTotal(long Total) {
+        this.Total = Total;
     }
 }

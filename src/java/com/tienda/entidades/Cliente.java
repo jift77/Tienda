@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package com.tienda.entidades;
-
-import com.tienda.beans.Cliente.TarjetaCredito;
-
 /**
  *
  * @author georg
@@ -16,7 +13,6 @@ public class Cliente {
     private String Direccion;
     private String Email;
     private String Telefono;
-    private TarjetaCredito TarjetaCredito;
 
     /**
      * @return the Nombres
@@ -73,19 +69,4 @@ public class Cliente {
     public void setTelefono(String Telefono) {
         this.Telefono = Telefono;
     }
-
-    /**
-     * @return the TarjetaCredito
-     */
-    public TarjetaCredito getTarjetaCredito() {
-        return TarjetaCredito;
-    }
-
-    /**
-     * @param TarjetaCredito the TarjetaCredito to set
-     */
-    public void setTarjetaCredito(TarjetaCredito TarjetaCredito) {
-        this.TarjetaCredito = TarjetaCredito;
-    }
-    
 }

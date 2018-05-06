@@ -18,4 +18,5 @@ public interface IOperProducto {
     void ActualizarProducto(Producto pro);
     void EliminarProducto(int id);
     void InsertarProducto(Producto pro);
+    void ReducirCantidad(int idPro, int cantidad);
 }

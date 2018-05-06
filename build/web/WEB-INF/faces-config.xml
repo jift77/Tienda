@@ -32,6 +32,11 @@
         <managed-bean-class>com.tienda.entidades.Categoria</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>caja</managed-bean-name>
+        <managed-bean-class>com.tienda.beans.Cliente.Caja</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
     <navigation-rule>
         <navigation-case>
             <from-outcome>carrito</from-outcome>
@@ -63,8 +68,8 @@
     <navigation-rule>
         <from-view-id>/Cliente/carrito.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>pasarelaPago</from-outcome>
-            <to-view-id>/Cliente/pasarelaPago.xhtml</to-view-id>
+            <from-outcome>caja</from-outcome>
+            <to-view-id>/Cliente/caja.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -72,6 +77,14 @@
         <navigation-case>
             <from-outcome>categoria</from-outcome>
             <to-view-id>/Admin/categoria.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/Cliente/caja.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>confirmacion</from-outcome>
+            <to-view-id>/Cliente/confirmacion.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
 </faces-config>

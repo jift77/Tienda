@@ -89,4 +89,21 @@ public class OperProducto extends TiendaDBManager implements IOperProducto {
             Logger.getLogger(OperProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    public void ReducirCantidad(int idPro, int cantidad) {
+        try {
+            conectarse();
+            if(con != null)
+            {
+                PreparedStatement ps = con.prepareStatement("UPDATE producto SET cantidad = cantidad - ? WHERE producto_id = ?");
+                ps.setInt(1, cantidad);
+                ps.setInt(2, idPro);
+                ps.executeUpdate();
+            }
+            desconectarse();
+        } catch (SQLException ex) {
+            Logger.getLogger(OperProducto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

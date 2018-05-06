@@ -66,4 +66,9 @@ public class OperProducto implements IOperProducto, Serializable{
         pro.setProducto_Id(id);
         this.productos.put(id, pro);
     }
+
+    @Override
+    public void ReducirCantidad(int idPro, int cantidad) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
